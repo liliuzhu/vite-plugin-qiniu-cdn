@@ -1,0 +1,35 @@
+{
+  "name": "vite-plugin-qiniu-cdn",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rollup -c -w --bundleConfigAsCjs",
+    "build": "cross-env NODE_ENV=produaction rollup -c --bundleConfigAsCjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "typescript": "^4.5.5",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "qiniu": "^7.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/liliuzhu/vue-directives.git/issues"
+  },
+  "homepage": "https://github.com/liliuzhu/vue-directives.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liliuzhu/vue-directives.git"
+  }
+}
