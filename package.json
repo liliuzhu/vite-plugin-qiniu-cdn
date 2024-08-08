@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-qiniu-cdn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vite 打包完成后上传七牛插件",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
