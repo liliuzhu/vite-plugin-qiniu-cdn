@@ -1,0 +1,42 @@
+{
+  "name": "vite-plugin-qiniu-cdn",
+  "version": "0.0.1",
+  "description": "vite 打包完成后上传七牛插件",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.es.js",
+  "scripts": {
+    "dev": "rollup -c -w --bundleConfigAsCjs",
+    "build": "rollup -c --bundleConfigAsCjs"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "qiniu"
+  ],
+  "author": "liliuzhu <liliuzhu1992@163.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^18.14.6",
+    "rollup": "^3.18.0",
+    "rollup-plugin-polyfill-node": "^0.12.0",
+    "typescript": "^4.5.5",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "ora": "^6.1.2",
+    "qiniu": "^7.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/liliuzhu/vite-plugin-qiniu-cdn.git/issues"
+  },
+  "homepage": "https://github.com/liliuzhu/vite-plugin-qiniu-cdn.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liliuzhu/vite-plugin-qiniu-cdn.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
