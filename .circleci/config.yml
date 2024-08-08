@@ -1,0 +1,64 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+orbs:
+  node: circleci/node@5.2.0
+
+#defaults: &defaults
+#  working_directory: ~/project/vue-directives
+#  docker:
+#    - image: cimg/node:17.2.0
+
+
+jobs:
+  build:
+    executor: node/default
+    docker:
+      # specify the version you desire here
+      - image: cimg/node:16.20.2
+
+    working_directory: ~/project/vite-plugin-qiniu-cdn
+
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: '16.20.2'
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install Dependencies
+          command: yarn install
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+
+      # run build!
+      - run:
+          name: Gatsby build site
+          command: yarn build
+
+# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
+workflows:
+  # Name the workflow "Welcome"
+  build:
+    # Run the welcome/run job in its own container
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+              - dev
