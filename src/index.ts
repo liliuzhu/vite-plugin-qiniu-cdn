@@ -39,7 +39,7 @@ function getFilePaths (dir:string, sourceFilesDir:string = dir):Array<File> {
 export default function vitePluginQiniuCDN(propOption: Option): PluginOption {
    const option = Object.assign({}, defaultOptions, propOption)
    return {
-      name: 'vite-plugin-qiniu', // 必须的，将会在 warning 和 error 中显示
+      name: 'vite-plugin-qiniu-cdn', // 必须的，将会在 warning 和 error 中显示
       enforce: 'post',
       apply: 'build',
       // buildEnd(){
