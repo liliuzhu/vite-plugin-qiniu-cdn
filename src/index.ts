@@ -1,3 +1,13 @@
+
+
+/*!
+ * vite-plugin-qiniu-cnd
+ * (c) 2024 liliuzhu <liliuzhu1992@163.com>
+ * Released under the MIT License.
+ */
+
+
+
 import type { PluginOption } from 'vite'
 import path from "path";
 import fs from "fs";
@@ -35,7 +45,6 @@ function getFilePaths (dir:string, sourceFilesDir:string = dir):Array<File> {
       }
    }).flat() as Array<File>
 }
-
 export default function vitePluginQiniuCDN(propOption: Option): PluginOption {
    const option = Object.assign({}, defaultOptions, propOption)
    return {
@@ -56,7 +65,7 @@ export default function vitePluginQiniuCDN(propOption: Option): PluginOption {
          vaildField.forEach(field => {
             let val = option[field];
             if (!val) {
-               console.log(` 插件 参数${field} 必须填写`);
+               console.warn(` 插件 参数${field} 必须填写`);
                option.enable = false
             }
          });
@@ -72,7 +81,7 @@ export default function vitePluginQiniuCDN(propOption: Option): PluginOption {
             let qiniuPlugin = new QiniuPlugin({ ...option, assets })
             qiniuPlugin.uploadFiles()
          } else {
-            console.log(`已禁用 可设置enable: true 开启`);
+            console.warn(`已禁用 可设置enable: true 开启`);
          }
       }
    }

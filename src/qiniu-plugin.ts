@@ -44,8 +44,6 @@ class QiniuPlugin {
       // Mark finished
       let _finish = (err?:Error) => {
          spinner.succeed();
-         // eslint-disable-next-line no-console
-         console.log('\n');
       };
 
       // Filter files that should be uploaded to Qiniu CDN
@@ -65,7 +63,7 @@ class QiniuPlugin {
 
       totalFiles = filesNames.length;
 
-      console.log('\n');
+      // console.info('\n');
       let spinner = ora({
          text: tip(0, retryFiles.length, totalFiles, false),
          color: 'green'
@@ -91,7 +89,7 @@ class QiniuPlugin {
               function(err, body) {
                  // handle upload error
                  if (err) {
-                    console.log(`上传文件 ${fileName} 失败: ${err.message || err.name || err.stack}`);
+                    console.error(`上传文件 ${fileName} 失败: ${err.message || err.name || err.stack}`);
                     if (!~retryFiles.indexOf(fileName)) retryFiles.push(fileName);
                  } else {
                     uploadedFiles++;
@@ -116,8 +114,6 @@ class QiniuPlugin {
       // Retry all failed files one by one
       const retryFailedFiles = function(err?:Error):any {
          if (err) {
-            // eslint-disable-next-line no-console
-            console.log('\n');
             return Promise.reject(err);
          }
 
@@ -147,8 +143,7 @@ class QiniuPlugin {
       // Execute stack according to `batch` option
       const execStack = function(err?:Error):any {
          if (err) {
-            // eslint-disable-next-line no-console
-            console.log('\n');
+            // console.log('\n');
             return Promise.reject(err);
          }
 

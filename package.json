@@ -1,12 +1,19 @@
 {
   "name": "vite-plugin-qiniu-cdn",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "vite 打包完成后上传七牛插件",
-  "main": "lib/index.esm.js",
-  "module": "lib/index.esm.js",
-  "type": "module",
+  "main": "lib/index.cjs",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "files": [
-    "lib/index.esm.js"
+    "lib"
   ],
   "scripts": {
     "dev": "rollup -c -w --bundleConfigAsCjs",
@@ -20,7 +27,7 @@
   "author": "liliuzhu <liliuzhu1992@163.com>",
   "license": "ISC",
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/node": "^18.14.6",
     "rollup": "^3.18.0",
@@ -30,7 +37,8 @@
   },
   "dependencies": {
     "ora": "^6.1.2",
-    "qiniu": "^7.8.0"
+    "qiniu": "^7.8.0",
+    "rollup-plugin-delete": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/liliuzhu/vite-plugin-qiniu-cdn.git/issues"

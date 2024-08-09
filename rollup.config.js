@@ -4,18 +4,20 @@ import ts from "@rollup/plugin-typescript"
 import terser from "@rollup/plugin-terser"
 // import nodePolyfills from "rollup-plugin-polyfill-node"
 
+import del from 'rollup-plugin-delete'
+
 export default {
     input: path.resolve(__dirname, "./src/index.ts"),
     output: [
         {
-            file: path.resolve(__dirname, './lib/index.esm.js'),
+            file: path.resolve(__dirname, './lib/index.mjs'),
             format: 'es',
-            sourcemap: true
+            sourcemap: false
         },
         {
-            file: path.resolve(__dirname, './lib/index.js'),
+            file: path.resolve(__dirname, './lib/index.cjs'),
             format: 'cjs',
-            sourcemap: true,
+            sourcemap: false,
         }
     ],
     // output: {
@@ -25,27 +27,26 @@ export default {
     //     sourcemap: true
     // },
     plugins: [
+        del({
+            targets: 'lib',
+            verbose: true
+        }),
         ts(),
         // nodePolyfills(),
         // commonjs(), // 将 CommonJS 模块转换为可以被 Rollup 处理的格式
         terser({
-            // compress:{
-            //     drop_console: false,
-            //     drop_debugger: true
-            // },
-            // remove all comments
+            mangle: false,   // 禁用变量名混淆
             compress: {
-                module: true,
-                keep_fargs:true,
-                keep_fnames:true,
+                drop_console: ['log', 'info'],
+                drop_debugger: true
             },
-            // compress: false,
-            keep_classnames: true,
-            keep_fnames: true,
-            module: false,
+            // keep_classnames: true,
+            // keep_fnames: true,
+            // module: false,
             format: {
                 comments: 'some',
-                keep_quoted_props: true
+                beautify: true,   // 保持代码可读
+                keep_quoted_props: true,
             },
         }),
 
