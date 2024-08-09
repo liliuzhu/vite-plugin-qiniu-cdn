@@ -1,12 +1,12 @@
 {
   "name": "vite-plugin-qiniu-cdn",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "vite 打包完成后上传七牛插件",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "main": "lib/index.esm.js",
+  "module": "lib/index.esm.js",
+  "type": "module",
   "files": [
-    "lib/index.cjs.js",
-    "lib/index.es.js"
+    "lib/index.esm.js"
   ],
   "scripts": {
     "dev": "rollup -c -w --bundleConfigAsCjs",
